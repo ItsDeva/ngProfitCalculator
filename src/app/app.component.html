@@ -1,0 +1,20 @@
+<div class="container">
+	<hello name="{{ name }}"></hello>
+
+	<div class="text-input">
+		<input type="text" id="input1" [(ngModel)]="buyValue" placeholder="Try typing something in here!">
+		<label for="input1">Buy @</label>
+	</div>
+	<div class="text-input">
+		<input type="text" id="input2" [(ngModel)]="purchaseValue" placeholder="Try typing something in here!">
+		<label for="input2">Bought</label> {{purchaseValue/buyValue*100 || 0}}%
+	</div>
+	<div class="text-input">
+		<input type="text" id="input3"  [(ngModel)]="sellValue" placeholder="Try typing something in here!">
+		<label for="input3">Sell @</label> {{percentage || 0}}%
+	</div>
+	<div class="text-input-profit">
+		<input type="text" placeholder="{{profit() || 0}} rs">
+		<label>Profit</label>
+	</div>
+</div>
