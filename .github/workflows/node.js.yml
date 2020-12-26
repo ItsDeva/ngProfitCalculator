@@ -29,11 +29,15 @@ jobs:
     #- run: ng build --prod
     - run: ls -lh
     - name: 📂 Prod Deploy
+      env:
+          FTP_SERVER_HOST: ${{ secrets.FTP_SERVER_HOST}}
+          FTP_USER_NAME: ${{ secrets.FTP_USER_NAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: ${{ secrets.prod.FTP_SERVER_HOST}}
-        username: ${{ secrets.prod.FTP_USER_NAME }}
-        password: ${{ secrets.prod.FTP_PASSWORD }}
+        server: $FTP_SERVER_HOST
+        username: $FTP_USER_NAME
+        password: $FTP_PASSWORD
         local-dir: ./src/
         server-dir: ./web-apps/ngPriceCalc/
 
