@@ -24,16 +24,16 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm install @angular/cli -g
-    - run: ng build --prod
+    #- run: npm install
+    #- run: npm install @angular/cli -g
+    #- run: ng build --prod
     - run: ls -lh
     - name: 📂 Prod Deploy
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: ${{ secrets.FTP_SERVER_HOST}}
-        username: ${{ secrets.FTP_USER_NAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        local-dir: ./dist/demo/
+        server: ${{ secrets.prod.FTP_SERVER_HOST}}
+        username: ${{ secrets.prod.FTP_USER_NAME }}
+        password: ${{ secrets.prod.FTP_PASSWORD }}
+        local-dir: ./src/
         server-dir: ./web-apps/ngPriceCalc/
 
